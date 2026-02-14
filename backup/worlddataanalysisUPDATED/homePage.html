@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Data Analysis - Understanding the world through data & insight</title>
+    <style>
+        /* ============================================
+           GLOBAL RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ============================================
+           NAVIGATION BAR
+           Desktop and Mobile responsive
+           ============================================ */
+        .navbar {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        /* Logo Section */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #3d5a80;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Desktop Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            color: #e07856;
+        }
+
+        /* Subscribe Button */
+        .subscribe-btn {
+            background-color: #3d5a80;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #2c4560;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            transition: 0.3s;
+        }
+
+        /* ============================================
+           HERO SECTION
+           Main homepage hero with tagline
+           ============================================ */
+        .hero-section {
+            background-color: #fef5f1;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            color: #e07856;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .hero-title .italic-text {
+            font-style: italic;
+            color: #3d5a80;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Hero Action Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #3d5a80;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #2c4560;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #3d5a80;
+            padding: 15px 35px;
+            border: 2px solid #3d5a80;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3d5a80;
+            color: white;
+        }
+
+        /* ============================================
+           CONTENT SECTIONS
+           Reusable section for reports, articles
+           ============================================ */
+        .content-section {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .content-section.dark-bg {
+            background-color: #1e2836;
+            color: white;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+        }
+
+        .dark-bg .section-title {
+            color: #7ea3cc;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .dark-bg .section-subtitle {
+            color: #a0a0a0;
+        }
+
+        .view-more-link {
+            color: #3d5a80;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .view-more-link:hover {
+            color: #2c4560;
+        }
+
+        .dark-bg .view-more-link {
+            color: #7ea3cc;
+        }
+
+        /* ============================================
+           CARD GRID
+           Grid layout for reports/articles
+           ============================================ */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #fef5f1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card-category {
+            color: #e07856;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .card-link {
+            color: #3d5a80;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+
+        .card-link:hover {
+            gap: 10px;
+        }
+
+        /* ============================================
+           EDITOR'S PICK SECTION
+           Featured content with image
+           ============================================ */
+        .editors-pick {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .editors-label {
+            color: #3d5a80;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-text h3 {
+            color: #e07856;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .featured-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .featured-text p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .featured-image {
+            background-color: #e8f0f7;
+            border-radius: 10px;
+            padding: 40px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Placeholder for map visualization */
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4e4f0 0%, #b8d4e8 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7ea3cc;
+            font-style: italic;
+        }
+
+        /* ============================================
+           INDEX PAGE STYLES
+           For the sitemap/index page
+           ============================================ */
+        .index-hero {
+            background-color: #465a72;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .index-hero .section-container {
+            max-width: 1200px;
+        }
+
+        .index-hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Index Category Cards */
+        .index-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .category-card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 35px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .category-icon {
+            color: #e07856;
+            font-size: 1.8rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+        }
+
+        .category-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .category-links li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+        }
+
+        .category-links li::before {
+            content: "📄";
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        .category-links a {
+            color: #3d5a80;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .category-links a:hover {
+            color: #e07856;
+        }
+
+        .no-reports {
+            color: #999;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           ARTICLE/REPORT PAGE STYLES
+           Individual report/article detail page
+           ============================================ */
+        .article-header {
+            background-color: white;
+            padding: 40px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .article-header .section-container {
+            max-width: 900px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e07856;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .breadcrumb:hover {
+            color: #c85f3d;
+        }
+
+        .article-title-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .article-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .share-btn {
+            background-color: #f0f0f0;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .share-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .article-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-item::before {
+            font-size: 1.1rem;
+        }
+
+        .meta-date::before {
+            content: "📅";
+        }
+
+        .meta-tag::before {
+            content: "🏷️";
+        }
+
+        .meta-tag a {
+            color: #3d5a80;
+            text-decoration: none;
+        }
+
+        .meta-tag a:hover {
+            text-decoration: underline;
+        }
+
+        /* Article Content Area */
+        .article-content {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .article-content .section-container {
+            max-width: 900px;
+        }
+
+        .visualization-container {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .figure-caption {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: white;
+            color: #3d5a80;
+            border: 2px solid #3d5a80;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #3d5a80;
+            color: white;
+        }
+
+        /* ============================================
+           FOOTER
+           Website footer with copyright
+           ============================================ */
+        .footer {
+            background-color: #f0f0f0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            color: #3d5a80;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           PAGE SWITCHER (for demonstration)
+           Navigation between template pages
+           ============================================ */
+        /* .page-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3d5a80;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+
+        .page-switcher select {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+        } */
+
+        /* Hide pages by default */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE STYLES
+           Media queries for tablets and phones
+           ============================================ */
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #f8f8f8;
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .nav-menu.active {
+                max-height: 400px;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            /* Mobile Hero Section */
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            /* Mobile Card Grid */
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Mobile Featured Content */
+            .featured-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .featured-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* Mobile Index Category Grid */
+            .index-category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Mobile Article Title */
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-title-section {
+                flex-direction: column;
+            }
+
+            /* Mobile Page Switcher */
+            .page-switcher {
+                left: 20px;
+                right: 20px;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           Reusable helper classes
+           ============================================ */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         PAGE SWITCHER (for demonstration)
+         ============================================ -->
+    <!-- <div class="page-switcher">
+        <label for="pageSelect" style="display: block; margin-bottom: 8px; font-size: 0.9rem;">View Template:</label>
+        <select id="pageSelect" onchange="switchPage(this.value)">
+            <option value="home">Homepage</option>
+            <option value="index">Index/Sitemap</option>
+            <option value="article">Article/Report</option>
+        </select>
+    </div> -->
+
+    <!-- ============================================
+         HOMEPAGE
+         ============================================ -->
+    <div id="homePage" class="page active">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🌐</div>
+                    <span>World Data Analysis</span>
+                </a>
+
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Demographics</a></li>
+                    <li><a href="#">Economics</a></li>
+                    <li><a href="#">Index</a></li>
+                    <li><button class="subscribe-btn">Subscribe</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-label">DATA JOURNALISM REDEFINED</div>
+                <h1 class="hero-title">
+                    Understanding the world<br>
+                    through <span class="italic-text">data & insight</span>
+                </h1>
+                <p class="hero-description">
+                    We transform complex global datasets into clear, interactive visualizations. 
+                    Explore demographics, macroeconomics, and social trends that shape our future.
+                </p>
+                <div class="hero-buttons">
+                    <a href="allTopics.html" class="btn-primary">Explore All Data</a>
+                    <a href="#" class="btn-secondary">View Demographics</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Reports Section -->
+        <section class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Latest Reports</h2>
+                        <p class="section-subtitle">Newest additions to our data library</p>
+                    </div>
+                    <a href="#" class="view-more-link">View Index →</a>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-category">GLOBAL ECONOMICS</div>
+                        <h3 class="card-title">GDP vs Life Expectancy</h3>
+                        <p class="card-description">
+                            Correlation between economic output and health outcomes.
+                        </p>
+                        <a href="#" class="card-link">Read Report →</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-category">WORLD POPULATION</div>
+                        <h3 class="card-title">Population Growth by Region (2020-2024)</h3>
+                        <p class="card-description">
+                            A look at how different continents are growing.
+                        </p>
+                        <a href="#" class="card-link">Read Report →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editor's Pick Section -->
+        <section class="editors-pick">
+            <div class="section-container">
+                <div class="editors-label">
+                    📈 EDITOR'S PICK
+                </div>
+
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <h3>WORLD POPULATION</h3>
+                        <h2>Global Population Density Map</h2>
+                        <p>Visualizing where people live across the globe.</p>
+                        <a href="#" class="btn-primary">Read Analysis</a>
+                    </div>
+
+                    <div class="featured-image">
+                        <div class="map-placeholder">
+                            [Global Population Density Map Visualization]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dive Deeper Section -->
+        <section class="content-section dark-bg">
+            <div class="section-container text-center">
+                <h2 class="section-title">Dive deeper into the data</h2>
+                <p class="section-subtitle">
+                    Access our complete index of interactive charts, detailed reports, and raw datasets.<br>
+                    Understanding the world starts with good data.
+                </p>
+                <div class="hero-buttons mt-20">
+                    <a href="#" class="btn-primary">Browse Full Sitemap</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <h3 class="footer-title">World Data Analysis</h3>
+                <p class="footer-text">
+                    © 2025 All rights reserved. Data visualization powered by D3.js
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         INDEX/SITEMAP PAGE
+         ============================================ -->
+    <div id="indexPage" class="page">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🌐</div>
+                    <span>World Data Analysis</span>
+                </a>
+
+                <div class="menu-toggle" id="menuToggle2">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-menu" id="navMenu2">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Demographics</a></li>
+                    <li><a href="#">Economics</a></li>
+                    <li><a href="#" class="active">Index</a></li>
+                    <li><button class="subscribe-btn">Subscribe</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Index Hero -->
+        <section class="index-hero">
+            <div class="section-container">
+                <p>
+                    A complete overview of all topics and data reports available on World Data Analysis.<br>
+                    Navigate through our hierarchical structure below.
+                </p>
+            </div>
+        </section>
+
+        <!-- Index Categories -->
+        <section class="content-section">
+            <div class="section-container">
+                <div class="index-category-grid">
+                    <!-- World Population Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <span class="category-icon">📁</span>
+                            <h2 class="category-title">World Population</h2>
+                        </div>
+                        <ul class="category-links">
+                            <li><a href="#">Population Growth by Region (2020-2024)</a></li>
+                            <li><a href="#">Global Population Density Map</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Global Economics Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <span class="category-icon">📁</span>
+                            <h2 class="category-title">Global Economics</h2>
+                        </div>
+                        <ul class="category-links">
+                            <li><a href="#">GDP vs Life Expectancy</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Demographics Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <span class="category-icon">📁</span>
+                            <h2 class="category-title">Demographics</h2>
+                        </div>
+                        <p class="no-reports">No reports yet</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <h3 class="footer-title">World Data Analysis</h3>
+                <p class="footer-text">
+                    © 2025 All rights reserved. Data visualization powered by D3.js
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         ARTICLE/REPORT PAGE
+         ============================================ -->
+    <div id="articlePage" class="page">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🌐</div>
+                    <span>World Data Analysis</span>
+                </a>
+
+                <div class="menu-toggle" id="menuToggle3">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-menu" id="navMenu3">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Demographics</a></li>
+                    <li><a href="#">Economics</a></li>
+                    <li><a href="#">Index</a></li>
+                    <li><button class="subscribe-btn">Subscribe</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Article Header -->
+        <section class="article-header">
+            <div class="section-container">
+                <a href="#" class="breadcrumb">
+                    ← WORLD POPULATION
+                </a>
+
+                <div class="article-title-section">
+                    <div>
+                        <h1 class="article-title">Global Population Density Map</h1>
+                        <p class="article-subtitle">Visualizing where people live across the globe.</p>
+                    </div>
+                    <button class="share-btn" title="Share">🔗</button>
+                </div>
+
+                <div class="article-meta">
+                    <span class="meta-item meta-date">Published December 30, 2025</span>
+                    <span class="meta-item meta-tag"><a href="#">map visualization</a></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Content -->
+        <section class="article-content">
+            <div class="section-container">
+                <!-- Visualization Container -->
+                <div class="visualization-container">
+                    <p class="figure-caption">Figure 1: Global Population Density Map Analysis</p>
+                    <div class="featured-image">
+                        <div class="map-placeholder">
+                            [Interactive Population Density Map]
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Text -->
+                <p class="article-text">
+                    This map shows the population density of major countries. Darker shades indicate higher density.
+                </p>
+
+                <!-- Back Button -->
+                <a href="#" class="back-button">
+                    ← More in World Population
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <h3 class="footer-title">World Data Analysis</h3>
+                <p class="footer-text">
+                    © 2025 All rights reserved. Data visualization powered by D3.js
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // PAGE SWITCHING FUNCTIONALITY
+        // ============================================
+        function switchPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const pageMap = {
+                'home': 'homePage',
+                'index': 'indexPage',
+                'article': 'articlePage'
+            };
+            
+            document.getElementById(pageMap[pageName]).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // ============================================
+        // MOBILE MENU TOGGLE - Homepage
+        // ============================================
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
+        // ============================================
+        // MOBILE MENU TOGGLE - Index Page
+        // ============================================
+        const menuToggle2 = document.getElementById('menuToggle2');
+        const navMenu2 = document.getElementById('navMenu2');
+
+        if (menuToggle2 && navMenu2) {
+            menuToggle2.addEventListener('click', () => {
+                navMenu2.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menuToggle2.contains(e.target) && !navMenu2.contains(e.target)) {
+                    navMenu2.classList.remove('active');
+                }
+            });
+        }
+
+        // ============================================
+        // MOBILE MENU TOGGLE - Article Page
+        // ============================================
+        const menuToggle3 = document.getElementById('menuToggle3');
+        const navMenu3 = document.getElementById('navMenu3');
+
+        if (menuToggle3 && navMenu3) {
+            menuToggle3.addEventListener('click', () => {
+                navMenu3.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menuToggle3.contains(e.target) && !navMenu3.contains(e.target)) {
+                    navMenu3.classList.remove('active');
+                }
+            });
+        }
+
+        // ============================================
+        // RESPONSIVE MENU - Close on resize
+        // ============================================
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.querySelectorAll('.nav-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

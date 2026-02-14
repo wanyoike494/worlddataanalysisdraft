@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Data Analysis - Understanding the world through data & insight</title>
+    <style>
+        /* ============================================
+           GLOBAL RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ============================================
+           NAVIGATION BAR
+           Desktop and Mobile responsive
+           ============================================ */
+        .navbar {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        /* Logo Section */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #3d5a80;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Desktop Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            color: #e07856;
+        }
+
+        /* Subscribe Button */
+        .subscribe-btn {
+            background-color: #3d5a80;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #2c4560;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            transition: 0.3s;
+        }
+
+        /* ============================================
+           HERO SECTION
+           Main homepage hero with tagline
+           ============================================ */
+        .hero-section {
+            background-color: #fef5f1;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            color: #e07856;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .hero-title .italic-text {
+            font-style: italic;
+            color: #3d5a80;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Hero Action Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #3d5a80;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #2c4560;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #3d5a80;
+            padding: 15px 35px;
+            border: 2px solid #3d5a80;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3d5a80;
+            color: white;
+        }
+
+        /* ============================================
+           CONTENT SECTIONS
+           Reusable section for reports, articles
+           ============================================ */
+        .content-section {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .content-section.dark-bg {
+            background-color: #1e2836;
+            color: white;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+        }
+
+        .dark-bg .section-title {
+            color: #7ea3cc;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .dark-bg .section-subtitle {
+            color: #a0a0a0;
+        }
+
+        .view-more-link {
+            color: #3d5a80;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .view-more-link:hover {
+            color: #2c4560;
+        }
+
+        .dark-bg .view-more-link {
+            color: #7ea3cc;
+        }
+
+        /* ============================================
+           CARD GRID
+           Grid layout for reports/articles
+           ============================================ */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #fef5f1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card-category {
+            color: #e07856;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .card-link {
+            color: #3d5a80;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+
+        .card-link:hover {
+            gap: 10px;
+        }
+
+        /* ============================================
+           EDITOR'S PICK SECTION
+           Featured content with image
+           ============================================ */
+        .editors-pick {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .editors-label {
+            color: #3d5a80;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-text h3 {
+            color: #e07856;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .featured-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .featured-text p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .featured-image {
+            background-color: #e8f0f7;
+            border-radius: 10px;
+            padding: 40px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Placeholder for map visualization */
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4e4f0 0%, #b8d4e8 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7ea3cc;
+            font-style: italic;
+        }
+
+        /* ============================================
+           FOOTER
+           Website footer with copyright
+           ============================================ */
+        .footer {
+            background-color: #f0f0f0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            color: #3d5a80;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE STYLES
+           Media queries for tablets and phones
+           ============================================ */
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #f8f8f8;
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .nav-menu.active {
+                max-height: 400px;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            /* Mobile Hero Section */
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            /* Mobile Card Grid */
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Mobile Featured Content */
+            .featured-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .featured-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           Reusable helper classes
+           ============================================ */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         NAVIGATION BAR
+         Sticky header with responsive menu
+         ============================================ -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">🌐</div>
+                <span>World Data Analysis</span>
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Demographics</a></li>
+                <li><a href="#">Economics</a></li>
+                <li><a href="#">Index</a></li>
+                <li><button class="subscribe-btn">Subscribe</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+         Main landing page hero
+         ============================================ -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-label">DATA JOURNALISM REDEFINED</div>
+            <h1 class="hero-title">
+                Understanding the world<br>
+                through <span class="italic-text">data & insight</span>
+            </h1>
+            <p class="hero-description">
+                We transform complex global datasets into clear, interactive visualizations. 
+                Explore demographics, macroeconomics, and social trends that shape our future.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Explore All Data</a>
+                <a href="#" class="btn-secondary">View Demographics</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LATEST REPORTS SECTION
+         Cards displaying recent reports
+         ============================================ -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Latest Reports</h2>
+                    <p class="section-subtitle">Newest additions to our data library</p>
+                </div>
+                <a href="#" class="view-more-link">View Index →</a>
+            </div>
+
+            <div class="card-grid">
+                <!-- Report Card 1 -->
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-category">GLOBAL ECONOMICS</div>
+                    <h3 class="card-title">GDP vs Life Expectancy</h3>
+                    <p class="card-description">
+                        Correlation between economic output and health outcomes.
+                    </p>
+                    <a href="#" class="card-link">Read Report →</a>
+                </div>
+
+                <!-- Report Card 2 -->
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-category">WORLD POPULATION</div>
+                    <h3 class="card-title">Population Growth by Region (2020-2024)</h3>
+                    <p class="card-description">
+                        A look at how different continents are growing.
+                    </p>
+                    <a href="#" class="card-link">Read Report →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         EDITOR'S PICK SECTION
+         Featured content with visualization
+         ============================================ -->
+    <section class="editors-pick">
+        <div class="section-container">
+            <div class="editors-label">
+                📈 EDITOR'S PICK
+            </div>
+
+            <div class="featured-content">
+                <div class="featured-text">
+                    <h3>WORLD POPULATION</h3>
+                    <h2>Global Population Density Map</h2>
+                    <p>Visualizing where people live across the globe.</p>
+                    <a href="#" class="btn-primary">Read Analysis</a>
+                </div>
+
+                <div class="featured-image">
+                    <div class="map-placeholder">
+                        [Global Population Density Map Visualization]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         DIVE DEEPER SECTION
+         Call to action for exploring data
+         ============================================ -->
+    <section class="content-section dark-bg">
+        <div class="section-container text-center">
+            <h2 class="section-title">Dive deeper into the data</h2>
+            <p class="section-subtitle">
+                Access our complete index of interactive charts, detailed reports, and raw datasets.<br>
+                Understanding the world starts with good data.
+            </p>
+            <div class="hero-buttons mt-20">
+                <a href="#" class="btn-primary">Browse Full Sitemap</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         Copyright and attribution
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">World Data Analysis</h3>
+            <p class="footer-text">
+                © 2025 All rights reserved. Data visualization powered by D3.js
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         Mobile menu toggle functionality
+         ============================================ -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when window is resized to desktop size
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
