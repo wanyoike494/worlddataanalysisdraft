@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Data Analysis Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8WcJ5vA4J5f0v+0h5v0w8Yf4b4Q8m2w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top-shell">
+      <!-- <div class="container nav-main">
+        <div class="brand">
+          <i class="fa-solid fa-seedling"></i>
+          <span>WDA Project</span>
+        </div>
+        <nav class="main-links">
+          <a href="#">Enters with ' lysiret</a>
+          <a href="#">WDA Analyses Articles <i class="fa-solid fa-chevron-down"></i></a>
+          <button class="btn-login">Log in</button>
+        </nav>
+      </div> -->
+
+      <div class="container nav-sub">
+        <a href="#">Editor's picks</a>
+        <span>»</span>
+        <a href="#">World Politics</a>
+        <span>»</span>
+        <a href="#">Focused on World</a>
+        <span>»</span>
+        <a href="#">WDA Analysis Articles</a>
+        <button aria-label="Open more"><i class="fa-solid fa-chevron-down"></i></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <h1>Word Data Analysis</h1>
+        <p>Explore our world through data</p>
+
+        <!-- <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search for posts, articles..." />
+        </div> -->
+
+        <!-- <div class="hero-stats">
+          <div>100 Pages</div>
+          <div>150 Data Sets</div>
+          <div>50 Data Sets</div>
+        </div> -->
+      </section>
+
+      <section class="cards-wrap">
+        <div class="container cards-grid top-grid">
+          <article class="card card-large">
+            <h3>Choropleth map of world</h3>
+            <p>showing population</p>
+            <div class="media media-map"><img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="World map placeholder" /></div>
+          </article>
+
+          <article class="card card-large">
+            <h3>Line graph shows population</h3>
+            <p>increase (mock)</p>
+            <div class="media media-graph blank-space">
+              <canvas id="populationChart" aria-label="Population line chart" role="img"></canvas>
+            </div>
+          </article>
+        </div>
+
+        <div class="container cards-grid bottom-grid">
+          <article class="card">
+            <h3>Africa life expectancy</h3>
+            <p>(Line graph)</p>
+            <div class="media blank-space">
+              <canvas id="africaChart" aria-label="Africa line chart" role="img"></canvas>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Europe GDP analysis</h3>
+            <p>(Choropleth map)</p>
+            <div class="media media-map"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80" alt="Europe map placeholder" /></div>
+          </article>
+
+          <article class="card">
+            <h3>Asia geography map</h3>
+            <p>&nbsp;</p>
+            <div class="media media-map"><img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80" alt="Asia map placeholder" /></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="topics container">
+        <h2>Browse all topics</h2>
+        <div class="topics-panel">
+          <div class="topic-col">
+            <h4><i class="fa-regular fa-envelope"></i> WDA <span>Project</span> <i class="fa-solid fa-angle-right"></i></h4>
+            <p>
+              Our mission is to use world data analysis to be the data transparency leader.
+            </p>
+          </div>
+
+          <div class="topic-col">
+            <h4>Featured Topics <i class="fa-solid fa-angle-right"></i></h4>
+            <ul>
+              <li>World Politics</li>
+              <li>Climate Change</li>
+              <li>Health</li>
+            </ul>
+          </div>
+
+          <div class="topic-col">
+            <h4>Latest <i class="fa-solid fa-angle-right"></i></h4>
+            <ul>
+              <li>World Bank GDP vs GDP</li>
+              <li>UN's goal towards PPP</li>
+              <li>FARS</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="follow-strip">
+          <span>Follow us</span>
+          <a href="#" class="social twitter" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="social whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#">SOLIDIONS</a>
+      <a href="#">ABOUT</a>
+      <a href="#">DATA SOURCES</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

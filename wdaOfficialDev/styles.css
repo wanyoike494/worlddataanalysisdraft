@@ -1,0 +1,169 @@
+:root {
+      --green-deep:   #1a3c2e;
+      --green-mid:    #2d6a4f;
+      --green-light:  #52b788;
+      --green-pale:   #b7e4c7;
+      --blue-deep:    #0a2744;
+      --blue-mid:     #1565c0;
+      --blue-sky:     #4a9fd4;
+      --blue-pale:    #bbdefb;
+      --brown-deep:   #3e2723;
+      --brown-mid:    #795548;
+      --brown-light:  #a1887f;
+      --brown-pale:   #d7ccc8;
+      --cream:        #f9f6f0;
+      --warm-white:   #fefcf8;
+      --text-dark:    #1a1a1a;
+      --text-mid:     #4a4a4a;
+      --text-light:   #7a7a7a;
+      --card-bg:      #ffffff;
+      --border:       #e8e2d8;
+      --shadow-sm: 0 2px 12px rgba(26,60,46,0.08);
+      --shadow-md: 0 8px 32px rgba(26,60,46,0.12);
+      --shadow-lg: 0 20px 60px rgba(26,60,46,0.16);
+} /*This defines the color that we will use for the project.*/
+
+/*************************************************************************************************/
+/*GLOBAL SETTING*/
+*, *::after, *::before { /*::before and ::after They allow you to insert "extra" content into a page using only CSS, without actually adding more HTML tags to your file.*/
+    box-sizing: border-box; /*forces an element's total width and height to include its padding and borders, preventing them from expanding the box beyond its defined size.*/
+    margin: 0; /*acts as a reset to remove the inconsistent, "invisible" spacing that browsers automatically add to HTML elements by default.*/
+    padding: 0; /*acts as a reset to remove the inconsistent, "invisible" spacing that browsers automatically add to HTML elements by default.*/
+}
+html{
+    scroll-behavior: smooth; /*The browser performs a fluid, animated scroll from the current position to the target location*/
+}
+
+body{
+    font-family: 'DM sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden; /*clips any content that is wider than its container and hides the horizontal scrollbar, preventing users from scrolling sideways.*/
+}
+
+a{
+    text-decoration: none; /*no underline*/
+    color: inherit; /* tells an element to take the exact same text color as its parent element, overriding any default colors set by the browser.*/
+}
+
+img{
+    display: block; /*removes the default bottom whitespace and makes the image behave like a structural container rather than an inline character.*/
+    max-width: 100%; /*prevents the image from ever being wider than its parent container, ensuring it scales down automatically for smaller screens.*/
+}
+
+/*********************************************GRAIN OVERLAY***********************************************************************************/
+body::before{ /*Creates a pseudo-element that acts as the first child of the body, allowing you to add extra styling without changing the HTML structure.*/
+    content: ''; /*Essential for the pseudo-element to render, providing an empty string so the element exists visually.*/
+    position: fixed; /*Locks the element to the viewport so it stays in place even when the page is scrolled.*/
+    inset: 0; /*simultaneously sets the top, right, bottom, and left distances to zero, effectively stretching a positioned element to fill its entire parent container.*/
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; /*Ensures the layer is "invisible" to mouse clicks, allowing users to interact with buttons and links underneath it.*/
+    z-index: 9999; /*Places the noise layer on top of almost every other element on the page.*/
+    opacity: 0.6; /*Sets the transparency level of the entire pseudo-element, making the noise effect subtle rather than overpowering.*/
+
+}
+/*-- ----------------------------NAVIGATION BAR START------------------------------------------------------------------------------- --*/
+nav{
+    position: sticky; /* Makes the navigation bar stick to the top of the viewport when scrolling */
+    top: 0; /* Positions the navigation bar at the very top of the viewport */
+    z-index: 100; /* Ensures the navigation bar stays above other elements on the page */
+    background: rgba(249, 246, 240, 0.92);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px); /* Applies a blur effect to the background behind the navigation bar for modern browsers */
+    border-bottom: 1px solid var(--border);/* Adds a solid bottom border to the navigation bar using a CSS variable for the color */
+    padding: 0 clamp(1rem, 4vw, 3rem); /* Sets responsive padding: 0 on top/bottom, and horizontally clamped between 1rem and 3rem based on viewport width */
+}
+.navInner{
+    display: flex; /* Uses flexbox layout for the navigation inner container */
+    /*Flexbox (Flexible Box Layout) is a CSS layout model designed to efficiently arrange, align, and distribute space among items in a 
+    container, even when their size is unknown or dynamic. It simplifies creating complex layouts with less code, especially for 
+    responsive designs.*/
+    align-items: center; /* Vertically centers all child elements within the container */
+    justify-content: space-between;  /* Horizontally spaces child elements with equal space between them */
+    height: 64px; /* Sets the height of the navigation inner container to 64 pixels */
+    max-width: 1280px; /* Limits the maximum width of the container to 1280 pixels */
+    margin: 0 auto; /* Centers the container horizontally within its parent element */
+}
+.logo{
+    display: flex;
+    align-items: center; /* Vertically centers the logo elements within the container */
+    gap: 10px; /* Adds 10px horizontal spacing between the logo icon and the text */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    transition: opacity .2s; /* Creates a smooth 0.2-second fade effect when opacity changes on hover */
+}
+.logo:hover{
+    opacity: .75;
+}
+.logoIcon{
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--green-mid), var(--blue-sky));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.navLinks{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+}
+.navLinks a{
+    font-size: .88rem;
+    font-weight: 500px;
+    color: var(--text-mid);
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: all .25s;
+}
+.navLinks a:hover{
+    color: var(--green-deep);
+    background: var(--color-green-50);
+}
+.navLinks .dropdown{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.navLinks .dropdown::after{
+    content: '▾';
+}
+.dropdownContainer{
+    position: relative;
+    list-style: none;
+}
+/**********************THe ACTUAL MENU BOX*********************************************************************************************/
+.dropdownMenu{
+    display: none; /*Hidden by defaults*/
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1000;
+    list-style: none;
+    border-radius: 10px;
+}
+.dropdownMenu li a{
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+.dropdownMenu li a:hover{
+    background-color: #f1f1f1;
+    color: #1a3c2e;
+}
+.dropdownMenu.show{
+    display: block;
+}
