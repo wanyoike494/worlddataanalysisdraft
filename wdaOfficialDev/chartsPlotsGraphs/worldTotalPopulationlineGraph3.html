@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Total Population — World Data Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- <div class="header">
+      <div class="wda-tag">World Data Analysis</div>
+      <h1>World <span>Population</span></h1>
+      <p class="subtitle">Total global population from 1960 to 2024 — tracking humanity's remarkable growth across six decades.</p>
+    </div> -->
+
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Population 1960</div>
+        <div class="stat-value" id="stat-start">—</div>
+        <div class="stat-sub">Baseline</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Population 2024</div>
+        <div class="stat-value accent" id="stat-end">—</div>
+        <div class="stat-sub">Latest</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Growth</div>
+        <div class="stat-value accent" id="stat-growth">—</div>
+        <div class="stat-sub">× 1960 baseline</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-top">
+        <div class="chart-title">GLOBAL POPULATION OVER TIME</div>
+        <div class="year-badge" id="year-badge">1960–2024</div>
+      </div>
+      <div id="loading"><div class="loader-ring"></div><div class="loader-text">Loading dataset…</div></div>
+      <div id="chart-wrap" style="position:relative; display:none;">
+        <svg id="chart-svg"></svg>
+        <div class="tooltip" id="tooltip">
+          <div class="tooltip-year" id="tt-year"></div>
+          <div class="tooltip-pop" id="tt-pop"></div>
+          <div class="tooltip-growth" id="tt-growth"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-card">
+      <div class="controls-row">
+        <button class="play-btn" id="play-btn" title="Play animation">
+          <svg id="play-icon" viewBox="0 0 16 16"><path d="M3 2l11 6-11 6V2z"/></svg>
+        </button>
+        <div class="speed-wrap">
+          <span class="speed-label">Speed</span>
+          <button class="speed-btn" data-speed="2000">0.5×</button>
+          <button class="speed-btn active" data-speed="900">1×</button>
+          <button class="speed-btn" data-speed="400">2×</button>
+          <button class="speed-btn" data-speed="150">4×</button>
+        </div>
+        <div class="range-row">
+          <span class="range-year" id="lbl-start">1960</span>
+          <div class="slider-track-wrap">
+            <div class="slider-track"></div>
+            <div class="slider-fill" id="slider-fill"></div>
+            <input type="range" class="range-input" id="range-start" min="1960" max="2024" value="1960" step="1" />
+            <input type="range" class="range-input" id="range-end"   min="1960" max="2024" value="2024" step="1" />
+          </div>
+          <span class="range-year" id="lbl-end">2024</span>
+        </div>
+      </div>
+      <div class="anim-bar-wrap" id="anim-bar-wrap">
+        <span class="anim-label">Playing</span>
+        <div class="anim-bar-track"><div class="anim-bar-fill" id="anim-bar"></div></div>
+      </div>
+    </div>
+
+    <!-- <div class="data-note">
+      <div class="data-note-icon">ℹ</div>
+      <p>Source: <a href="https://data.worldbank.org" target="_blank">World Bank Open Data</a> — SP.POP.TOTL indicator. Data compiled for the <a href="https://worlddataanalysis.com" target="_blank">World Data Analysis</a> project. Values represent mid-year population estimates.</p>
+    </div> -->
+  </div>
+
+  <script>
+  
+  </script>
+</body>
+</html>

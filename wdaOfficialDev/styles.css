@@ -80,7 +80,7 @@ nav{
     responsive designs.*/
     align-items: center; /* Vertically centers all child elements within the container */
     justify-content: space-between;  /* Horizontally spaces child elements with equal space between them */
-    height: 64px; /* Sets the height of the navigation inner container to 64 pixels */
+    height: 48px; /* Sets the height of the navigation inner container to 64 pixels */
     max-width: 1280px; /* Limits the maximum width of the container to 1280 pixels */
     margin: 0 auto; /* Centers the container horizontally within its parent element */
 }
@@ -120,6 +120,7 @@ nav{
     padding: 6px 14px;
     border-radius: 10px;
     transition: all .25s;
+    font-weight: 700;
 }
 .navLinks a:hover{
     color: var(--green-deep);
@@ -159,6 +160,7 @@ nav{
     display: block;
     font-size: 14px;
     transition: background 0.2s;
+    
 }
 .dropdownMenu li a:hover{
     background-color: #f1f1f1;
@@ -166,4 +168,11 @@ nav{
 }
 .dropdownMenu.show{
     display: block;
+}
+/* ---------------------------------------the second navigation area named editors pick************************************************* */
+.mainTopicsInner{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 8px;
+    cursor: pointer;
 }
