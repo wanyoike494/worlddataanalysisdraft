@@ -1,0 +1,242 @@
+/* Base Resets & Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+    --bg-dark-primary: #1c1c1c;
+    --bg-dark-secondary: #252525; /* Slightly offset color to distinguish the two bars */
+    --dropdown-bg: #2d2d2d;
+    --text-white: #ffffff;
+    --text-gray: #aaaaaa;
+    --accent-orange: #f05724;
+}
+
+body {
+    background-color: #111;
+}
+
+/* Global Navbar Layout */
+.navbar {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #333;
+}
+
+.navbar-primary {
+    background-color: var(--bg-dark-primary);
+    z-index: 1001; /* Keeps top navbar drop layers correct */
+}
+
+.navbar-secondary {
+    background-color: var(--bg-dark-secondary);
+    z-index: 1000;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo a {
+    color: var(--text-white);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+/* Nav items & Indicator arrows */
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--text-gray);
+    text-decoration: none;
+    padding: 24px 15px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-orange);
+}
+
+.arrow {
+    border: solid var(--text-gray);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 6px;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease, border-color 0.2s ease; [cite: 7]
+}
+
+.nav-link:hover .arrow, .nav-link.active .arrow {
+    border-color: var(--accent-orange);
+}
+
+/* Accent Call-to-Action Button */
+.btn-join {
+    background-color: var(--accent-orange);
+    color: var(--text-white);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* Desktop Hover Triggered Dropdowns */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Hide hamburger on desktop layouts */
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--dropdown-bg);
+        min-width: 180px;
+        list-style: none;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .dropdown-menu li a {
+        color: var(--text-white);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #3d3d3d;
+        color: var(--accent-orange);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block; /* Pure CSS hover effect */ [cite: 4]
+    }
+}
+
+/* ==========================================================================
+   Mobile Responsive Rules (768px and down)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Hamburger Menu Icon */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        height: 3px;
+        width: 100%;
+        background-color: var(--text-white);
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+
+    /* Transforming Hamburger into "X" when clicked */
+    .menu-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Vertically Stacked Mobile Menu Drawers */
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        flex-direction: column;
+        align-items: flex-start;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding: 20px 0;
+    }
+
+    /* Assign background colors to respective drawers to match parent bands */
+    .navbar-primary .nav-menu { background-color: var(--bg-dark-primary); }
+    .navbar-secondary .nav-menu { background-color: var(--bg-dark-secondary); }
+
+    .nav-menu.open {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 15px 25px;
+        justify-content: space-between; /* Pushes the dropdown indicator arrow to the far right */
+    }
+
+    .btn-item {
+        padding: 20px 25px;
+        width: 100%;
+    }
+    
+    .btn-join {
+        display: inline-block;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.15);
+        list-style: none;
+        transition: max-height 0.3s ease-out; [cite: 5]
+    }
+
+    .dropdown-menu li a {
+        color: var(--text-white);
+        padding: 12px 40px; /* Indent nested sub-links */
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Toggle visibility states via classes assigned by JS */
+    .dropdown.active .dropdown-menu {
+        max-height: 500px; [cite: 6]
+    }
+
+    .dropdown.active .arrow {
+        transform: rotate(-135deg); /* Flip indicator arrow vertically */ [cite: 7]
+    }
+}

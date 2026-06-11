@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Responsive Navigation Bars</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-primary">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#">PyTorch</a>
+            </div>
+
+            <button class="menu-toggle" data-target="menu-pytorch" aria-label="Toggle PyTorch navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-menu" id="menu-pytorch">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Learn <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Get Started</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Community <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Discussion Forum</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link active">Projects <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">PyTorch</a></li>
+                        <li><a href="#">vLLM</a></li>
+                        <li><a href="#">DeepSpeed</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item btn-item">
+                    <a href="#" class="btn-join">JOIN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-secondary">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#">Editors Pick</a>
+            </div>
+
+            <button class="menu-toggle" data-target="menu-editors" aria-label="Toggle Editors Pick navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-menu" id="menu-editors">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Categories <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Science</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Featured <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Weekly Top 10</a></li>
+                        <li><a href="#">Interviews</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Submit Article</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
