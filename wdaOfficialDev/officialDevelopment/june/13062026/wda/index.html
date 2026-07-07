@@ -41,7 +41,7 @@
     <nav class="navbar navbar-primary">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#">WDA <span>Project</span></a>
+                <a href="#"> 🌍 WDA <span>Project</span></a>
             </div>
             <!-- change pytorch to wda -->
             <!------------------------------------------- This section display humbergur icon--------------------------------------- -->
@@ -97,7 +97,7 @@
 <!-- ----------------------------------Start of Secondary Navigation------------------------------ -->
     <nav class="navbar navbar-secondary">
         <div class="nav-container">
-            <div class="nav-logo">
+            <div class="nav-logoSec">
                 <a href="#">Editors Pick</a>
             </div>
 
@@ -132,8 +132,8 @@
             </ul>
         </div>
     </nav>
-<!-- ----------------------End of Naviagtion Bars----------------------------------------------- ------->
-<!-- -------------------TICKER-------------------------------------------------------------------- ---->
+<!-- ----------------------End of Naviagtion Bars----------------------------------------------- ------------------------------------------>
+<!-- -------------------TICKER-------------------------------------------------------------------- ---------------------------------------->
     <div class="ticker">
         <div class="tickerTrack">
             <span class="ticker-item"><span>↑</span> Global GDP Growth: 3.1%</span>
@@ -153,6 +153,108 @@
             <span class="ticker-item"><span>↑</span> Literacy Rate: 87%</span>
         </div>
     </div>
+<!-- -------------------------------end of ticker------------------------------------------------------------------------------------ -->
+
+<!--------------------------------- HERO Section------------- --------------------------------------------------------------------------->
+<section class="hero">
+    <div class="heroInner">
+        <!-- Left Panels -->
+        <div class="heroSide">
+            <!-- World Population -->
+             <div class="hw-stat green">
+                <div class="hw-stat-label">🌍 World Population</div>
+                <div class="hw-stat-val" id="pop-counter">8.12B</div>
+                <div class="hw-stat-sub">People on Earth right now</div>
+                <div class="hw-stat-change up">▲ +0.9% / yr</div>
+            </div>
+
+        
+<!-- Main container for the hunger and food insecurity card -->
+<div class="bg-white rounded-xl p-3 shadow-sm">
+
+  <!-- Header section containing title and statistic badge -->
+  <div class="flex justify-between items-center mb-2">
+
+    <!-- Card title with emoji -->
+    <span class="text-sm font-semibold text-gray-800">
+      🌾 Food Insecurity Trend
+    </span>
+
+    <!-- Highlighted badge showing hungry population statistic -->
+    <span class="bg-orange-100 text-orange-800 text-xs font-medium px-2 py-1 rounded-md">
+      733M
+    </span>
+
+  </div>
+
+  <!-- SVG container for the mini trend chart -->
+  <svg viewBox="0 0 240 56" class="w-full h-14">
+
+    <!-- Define reusable SVG elements -->
+    <defs>
+
+      <!-- Create vertical gradient for chart fill -->
+      <linearGradient id="hungergrad" x1="0" y1="0" x2="0" y2="1">
+
+        <!-- Top gradient color with opacity -->
+        <stop offset="0%" stop-color="#ef6c00" stop-opacity=".35"/>
+
+        <!-- Bottom gradient fades to transparent -->
+        <stop offset="100%" stop-color="#ef6c00" stop-opacity="0"/>
+
+      </linearGradient>
+    </defs>
+
+    <!-- Area fill beneath the trend line -->
+    <path
+      d="M0,30 L40,28 L80,22 L120,18 L160,24 L200,32 L240,38 L240,56 L0,56Z"
+      fill="url(#hungergrad)"
+    />
+
+    <!-- Main trend line connecting data points -->
+    <polyline
+      points="0,30 40,28 80,22 120,18 160,24 200,32 240,38"
+      fill="none"
+      stroke="#ef6c00"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+
+    <!-- Circle marker for latest data point -->
+    <circle
+      cx="240"
+      cy="38"
+      r="3.5"
+      fill="#ef6c00"
+    />
+
+  </svg>
+
+  <!-- Timeline labels under the chart -->
+  <div class="flex justify-between text-[0.62rem] text-gray-500 font-mono mt-1">
+
+    <!-- Year label -->
+    <span>2015</span>
+
+    <!-- Year label -->
+    <span>2019</span>
+
+    <!-- Year label -->
+    <span>2024</span>
+
+  </div>
+
+  <!-- Short description of the chart trend -->
+  <div class="text-[0.68rem] text-gray-500 mt-1">
+    Hungry people worldwide — rising post-2019
+  </div>
+
+</div>
+```
+
+        </div>
+    </div>
+</section>
 
     <script src="js/wdaHomePage.js"></script>
 </body>

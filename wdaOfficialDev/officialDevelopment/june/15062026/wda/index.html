@@ -6,6 +6,8 @@
     <title>World Data Analysis</title>
     <link rel="stylesheet" href="css/wdaHomePage.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- D3.js CDN --> 
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <style type="text/tailwindcss">
         @theme {
             /* Greens */
@@ -41,7 +43,7 @@
     <nav class="navbar navbar-primary">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#">WDA <span>Project</span></a>
+                <a href="#"> 🌍 WDA <span>Project</span></a>
             </div>
             <!-- change pytorch to wda -->
             <!------------------------------------------- This section display humbergur icon--------------------------------------- -->
@@ -97,7 +99,7 @@
 <!-- ----------------------------------Start of Secondary Navigation------------------------------ -->
     <nav class="navbar navbar-secondary">
         <div class="nav-container">
-            <div class="nav-logo">
+            <div class="nav-logoSec">
                 <a href="#">Editors Pick</a>
             </div>
 
@@ -132,8 +134,8 @@
             </ul>
         </div>
     </nav>
-<!-- ----------------------End of Naviagtion Bars----------------------------------------------- ------->
-<!-- -------------------TICKER-------------------------------------------------------------------- ---->
+<!-- ----------------------End of Naviagtion Bars----------------------------------------------- ------------------------------------------>
+<!-- -------------------TICKER-------------------------------------------------------------------- ---------------------------------------->
     <div class="ticker">
         <div class="tickerTrack">
             <span class="ticker-item"><span>↑</span> Global GDP Growth: 3.1%</span>
@@ -153,6 +155,38 @@
             <span class="ticker-item"><span>↑</span> Literacy Rate: 87%</span>
         </div>
     </div>
+<!-- -------------------------------end of ticker------------------------------------------------------------------------------------ -->
+
+<!--------------------------------- HERO Section------------- --------------------------------------------------------------------------->
+<section class="hero">
+    <div class="heroInner">
+        <!-- Left Panels -->
+        <div class="heroSide">
+            <!-- World Population -->
+             <div class="hw-stat green">
+                <div class="hw-stat-label">🌍 World Population</div>
+                <div class="hw-stat-val" id="pop-counter">8.12B</div>
+                <div class="hw-stat-sub">People on Earth right now</div>
+                <div class="hw-stat-change up">▲ +0.9% / yr</div>
+            </div>
+
+            <!-- Main card --> 
+             <div class="bg-white rounded-xl p-3 shadow-sm border border-gray-100 w-full"> 
+                <!-- Header --> 
+                <div class="flex items-center justify-between mb-2"> 
+                <!-- Title --> 
+                <h3 class="text-sm font-semibold text-gray-800"> 🌾 Food Insecurity Trend </h3> 
+                <!-- Latest value badge --> 
+                <span class="bg-orange-100 text-orange-800 text-xs font-medium px-2 py-1 rounded-md" > 733M </span> </div>
+                <!-- Chart container -->
+                <div id="food-insecurity-chart" class="w-full h-16"></div> 
+                <!-- Footer text --> 
+                <p class="mt-1 text-[0.68rem] text-gray-500"> Hungry people worldwide — rising sharply post-2019 </p> </div>
+
+
+        </div>
+    </div>
+</section>
 
     <script src="js/wdaHomePage.js"></script>
 </body>

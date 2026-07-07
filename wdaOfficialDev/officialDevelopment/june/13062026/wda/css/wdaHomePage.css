@@ -1,0 +1,453 @@
+/* Base Resets & Variables */
+/* -----------------------------------We set our global colors-------------------------------- */
+:root {
+    --green-deep:   #1a3c2e;
+    --green-mid:    #2d6a4f;
+    --green-light:  #52b788;
+    --green-pale:   #b7e4c7;
+    --blue-deep:    #0a2744;
+    --blue-mid:     #1565c0;
+    --blue-sky:     #4a9fd4;
+    --blue-pale:    #bbdefb;
+    --brown-deep:   #3e2723;
+    --brown-mid:    #795548;
+    --brown-light:  #a1887f;
+    --brown-pale:   #d7ccc8;
+    --cream:        #f9f6f0;
+    --warm-white:   #fefcf8;
+    --text-dark:    #1a1a1a;
+    --text-mid:     #4a4a4a;
+    --text-light:   #7a7a7a;
+    --card-bg:      #ffffff;
+    --border:       #e8e2d8;
+    --gray:         #aaaaaa;
+    
+    --bg-dark-primary: #1c1c1c;
+    --bg-dark-secondary: #252525; /* Slightly offset color to distinguish the two bars */
+    --dropdown-bg: #2d2d2d;
+    --text-white: #ffffff;
+    --text-gray: #aaaaaa;
+    --accent-orange: #f05724;
+
+    --shadow-sm: 0 2px 12px rgba(26,60,46,0.08);
+    --shadow-md: 0 8px 32px rgba(26,60,46,0.12);
+    --shadow-lg: 0 20px 60px rgba(26,60,46,0.16);
+}
+/* -----------------------------Reset and base------------------------------- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+img{
+    display: block;
+    max-width: 100%;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--gray);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+/* ─── ------------------------------------Grain Overlay ─────────────────────────────────── */
+/* ----------------------We skip grain overlay for now, we will think about including it in the final project------------- */
+/* Global Navbar Layout */
+.navbar {
+    height: 45px; /*original 70px*/
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #333;
+}
+
+.navbar-primary {
+    background-color: var(--bg-dark-primary);
+    z-index: 1001; /* Keeps top navbar drop layers correct */
+    color: var(--brown-deep);
+}
+
+.navbar-secondary {
+    background-color: var(--bg-dark-secondary);
+    z-index: 1000;
+    color: var(--blue-sky);
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo a {
+    color: var(--text-white);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+/* Nav items & Indicator arrows */
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--text-gray);
+    text-decoration: none;
+    padding: 24px 15px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-orange);
+}
+
+.arrow {
+    border: solid var(--brown-mid);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 6px;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease, border-color 0.2s ease; [cite: 7]
+}
+
+.nav-link:hover .arrow, .nav-link.active .arrow {
+    border-color: var(--brown-mid);
+}
+
+/* Accent Call-to-Action Button */
+.btn-join {
+    background-color: var(--blue-mid);
+    color: var(--text-white);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* Desktop Hover Triggered Dropdowns */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Hide hamburger on desktop layouts */
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--dropdown-bg);
+        min-width: 180px;
+        list-style: none;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .dropdown-menu li a {
+        color: var(--text-white);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #3d3d3d;
+        color: var(--accent-orange);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block; /* Pure CSS hover effect */ [cite: 4]
+    }
+}
+
+/* ==========================================================================
+   Mobile Responsive Rules (768px and down)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Hamburger Menu Icon */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        height: 3px;
+        width: 100%;
+        background-color: var(--text-white);
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+
+    /* Transforming Hamburger into "X" when clicked */
+    .menu-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Vertically Stacked Mobile Menu Drawers */
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        flex-direction: column;
+        align-items: flex-start;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding: 20px 0;
+    }
+
+    /* Assign background colors to respective drawers to match parent bands */
+    .navbar-primary .nav-menu { background-color: var(--bg-dark-primary); }
+    .navbar-secondary .nav-menu { background-color: var(--bg-dark-secondary); }
+
+    .nav-menu.open {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 15px 25px;
+        justify-content: space-between; /* Pushes the dropdown indicator arrow to the far right */
+    }
+
+    .btn-item {
+        padding: 20px 25px;
+        width: 100%;
+    }
+    
+    .btn-join {
+        display: inline-block;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.15);
+        list-style: none;
+        transition: max-height 0.3s ease-out; [cite: 5]
+    }
+
+    .dropdown-menu li a {
+        color: var(--text-white);
+        padding: 12px 40px; /* Indent nested sub-links */
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Toggle visibility states via classes assigned by JS */
+    .dropdown.active .dropdown-menu {
+        max-height: 500px; [cite: 6]
+    }
+
+    .dropdown.active .arrow {
+        transform: rotate(-135deg); /* Flip indicator arrow vertically */ [cite: 7]
+    }
+}
+/* ----------------------------Ticker (the moving piece of text)------------------------------- */
+.ticker{
+background-color: var(--blue-deep);
+color: rgba(255, 255, 255, .8);
+font-family: 'DM Mono', monospace;
+font-size: .72rem;
+padding: 7px 0;
+overflow: hidden;
+}
+.tickerTrack{
+    display: flex;
+    gap: 60px;
+    animation-name: ticker;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    width: max-content;
+}
+@keyframes ticker { 
+    0{
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+.ticker-item{
+    white-space: nowrap;
+}
+.ticker-item span{
+    color: var(--green-light);
+    margin-right: 6px;
+}
+/* -------------------------------------Hero--------------------------------------------------------------------------------------------- */
+.hero{
+    position: relative;
+    background: linear-gradient(180deg, var(--warm-white), 0%, var(--cream) 100%);
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
+    overflow: hidden;
+}
+/* Decorative orbs */
+.hero::before, .hero::after{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .15;
+    pointer-events: none;
+}
+.hero::before{
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--green-light), transparent);
+    top: -150px;
+    left: -100px;
+    animation-name: drift1;
+    animation-duration: 12s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.hero::after{
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--blue-sky), transparent);
+    bottom: -100px;
+    right: -80px;
+    animation-name: drift2;
+    animation-duration: 14s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes drift1 {
+    to {
+        transform: translate(60px, 40px)
+    }
+}
+@keyframes drift2 {
+    to {
+        transform: translate(-40px, -30px)
+    }
+}
+/* 3-col hero layout */
+.heroInner{
+    position: relative;
+    max-width: 1380px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 24px;
+    align-items: start;
+}
+/* -------------------------------------------------------Stat widget ------------------------------------------------*/
+.hw-stat{
+    background: var(--card-bg);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+    transition-property: all;
+    transition-duration: .3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+.hw-stat::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 14px 0 0 14px;
+}
+.hw-stat.green::after { 
+    background: linear-gradient(180deg, var(--green-light), var(--green-mid)); 
+}
+.hw-stat.blue::after  { 
+    background: linear-gradient(180deg, var(--blue-sky), var(--blue-mid)); 
+}
+.hw-stat.brown::after { 
+    background: linear-gradient(180deg, var(--brown-light), var(--brown-mid)); 
+}
+.hw-stat:hover { 
+    transform: translateY(-3px); box-shadow: var(--shadow-md); 
+}
+
+.hw-stat-label {
+      font-size: .72rem; 
+      font-weight: 600;
+      text-transform: uppercase; 
+      letter-spacing: .06em;
+      color: var(--text-light); 
+      margin-bottom: 4px;
+}
+.hw-stat-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.5rem; 
+      font-weight: 500;
+      color: var(--green-deep); 
+      line-height: 1;
+}
+.hw-stat-val.blue  { color: var(--blue-mid); }
+.hw-stat-val.brown { color: var(--brown-mid); }
+.hw-stat-sub {
+      font-size: .72rem; 
+      color: var(--text-light);
+      margin-top: 3px;
+}
+.hw-stat-change {
+      display: inline-flex; 
+      align-items: center; 
+      gap: 3px;
+      font-size: .7rem; 
+      font-weight: 600;
+      padding: 2px 7px; 
+      border-radius: 20px;
+      margin-top: 5px;
+    }
+.hw-stat-change.up   { 
+    background: #e8f5e9; color: #2e7d32; 
+}
+.hw-stat-change.down { 
+    background: #fce4ec; color: #c62828; 
+}

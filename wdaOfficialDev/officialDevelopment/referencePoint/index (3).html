@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Data Analysis – Explore Our World Through Data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- <style></style> -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🌍</div>
+      WDA Project
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Enters with analysis</a></li>
+      <li><a href="#" class="dropdown">WDA Analysis Articles</a></li>
+      <li class="btn-wrap"><a href="#" class="btn-login">Log in</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ CATEGORY BAR ══════════════════════════════════════ -->
+<div class="cat-bar">
+  <div class="cat-bar-inner">
+    <span class="cat-item active">Editor's picks</span>
+    <span class="cat-sep">»</span>
+    <span class="cat-item">World Politics</span>
+    <span class="cat-sep">»</span>
+    <span class="cat-item">Focused on World</span>
+    <span class="cat-sep">»</span>
+    <span class="cat-item">WDA Analysis Articles</span>
+    <span class="cat-sep">»</span>
+    <div class="cat-more">▾</div>
+  </div>
+</div>
+
+<!-- ═══ TICKER ════════════════════════════════════════════ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span>↑</span> Global GDP Growth: 3.1%</span>
+    <span class="ticker-item"><span>●</span> World Population: 8.1 Billion</span>
+    <span class="ticker-item"><span>↑</span> Renewable Energy Share: 30%</span>
+    <span class="ticker-item"><span>●</span> CO₂ Levels: 421 ppm</span>
+    <span class="ticker-item"><span>↑</span> Life Expectancy Avg: 73.3 yrs</span>
+    <span class="ticker-item"><span>●</span> Internet Users: 5.4 Billion</span>
+    <span class="ticker-item"><span>↑</span> Literacy Rate: 87%</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span>↑</span> Global GDP Growth: 3.1%</span>
+    <span class="ticker-item"><span>●</span> World Population: 8.1 Billion</span>
+    <span class="ticker-item"><span>↑</span> Renewable Energy Share: 30%</span>
+    <span class="ticker-item"><span>●</span> CO₂ Levels: 421 ppm</span>
+    <span class="ticker-item"><span>↑</span> Life Expectancy Avg: 73.3 yrs</span>
+    <span class="ticker-item"><span>●</span> Internet Users: 5.4 Billion</span>
+    <span class="ticker-item"><span>↑</span> Literacy Rate: 87%</span>
+  </div>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- ── LEFT PANELS ── -->
+    <div class="hero-side">
+
+      <!-- World Population -->
+      <div class="hw-stat green">
+        <div class="hw-stat-label">🌍 World Population</div>
+        <div class="hw-stat-val" id="pop-counter">8.12B</div>
+        <div class="hw-stat-sub">People on Earth right now</div>
+        <div class="hw-stat-change up">▲ +0.9% / yr</div>
+      </div>
+
+      <!-- CO₂ Levels sparkline -->
+      <div class="hw-spark">
+        <div class="hw-spark-head">
+          <span class="hw-spark-title">🌡 CO₂ Levels (ppm)</span>
+          <span class="hw-spark-badge">421 ppm</span>
+        </div>
+        <svg viewBox="0 0 240 56" width="100%" height="56">
+          <defs>
+            <linearGradient id="co2grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ef9a9a" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#ef9a9a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,50 L30,46 L60,42 L90,37 L120,30 L150,22 L180,14 L210,9 L240,4 L240,56 L0,56Z" fill="url(#co2grad)"/>
+          <polyline points="0,50 30,46 60,42 90,37 120,30 150,22 180,14 210,9 240,4"
+            fill="none" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="240" cy="4" r="3.5" fill="#e53935"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--text-light);font-family:'DM Mono',monospace;margin-top:2px;">
+          <span>1980</span><span>2000</span><span>2025</span>
+        </div>
+      </div>
+
+      <!-- Top Economies mini bars -->
+      <div class="hw-bars">
+        <div class="hw-bars-title">💰 Top Economies (GDP $T)</div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.62rem;">USA</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--blue-mid);" data-w="95"></div></div>
+          <div class="bar-pct">$27T</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.62rem;">CHN</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--green-mid);" data-w="76"></div></div>
+          <div class="bar-pct">$18T</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.62rem;">DEU</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--brown-light);" data-w="38"></div></div>
+          <div class="bar-pct">$4.4T</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.62rem;">JPN</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--blue-sky);" data-w="32"></div></div>
+          <div class="bar-pct">$4.2T</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.62rem;">IND</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--green-light);" data-w="27"></div></div>
+          <div class="bar-pct">$3.5T</div>
+        </div>
+      </div>
+
+      <!-- Life Expectancy -->
+      <div class="hw-stat blue">
+        <div class="hw-stat-label">❤️ Global Life Expectancy</div>
+        <div class="hw-stat-val blue">73.3 yrs</div>
+        <div class="hw-stat-sub">World average 2024</div>
+        <div class="hw-stat-change up">▲ +6 yrs since 2000</div>
+      </div>
+
+      <!-- Hunger & Food Security -->
+      <div class="hw-spark">
+        <div class="hw-spark-head">
+          <span class="hw-spark-title">🌾 Food Insecurity Trend</span>
+          <span class="hw-spark-badge" style="background:#fff3e0;color:#e65100;">733M</span>
+        </div>
+        <svg viewBox="0 0 240 56" width="100%" height="56">
+          <defs>
+            <linearGradient id="hungergrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ef6c00" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="#ef6c00" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,30 L40,28 L80,22 L120,18 L160,24 L200,32 L240,38 L240,56 L0,56Z" fill="url(#hungergrad)"/>
+          <polyline points="0,30 40,28 80,22 120,18 160,24 200,32 240,38"
+            fill="none" stroke="#ef6c00" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="240" cy="38" r="3.5" fill="#ef6c00"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--text-light);font-family:'DM Mono',monospace;margin-top:2px;">
+          <span>2015</span><span>2019</span><span>2024</span>
+        </div>
+        <div style="font-size:.68rem;color:var(--text-light);margin-top:4px;">Hungry people worldwide — rising post-2019</div>
+      </div>
+
+      <!-- Refugee Crisis -->
+      <div class="hw-bars">
+        <div class="hw-bars-title">🏳 Displaced People by Region (M)</div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">AFR</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#e53935,#c62828);" data-w="88"></div></div>
+          <div class="bar-pct">36M</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">ASI</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#f57f17,#e65100);" data-w="72"></div></div>
+          <div class="bar-pct">27M</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">EUR</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#1565c0,#0d47a1);" data-w="40"></div></div>
+          <div class="bar-pct">11M</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">AME</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#558b2f,#33691e);" data-w="18"></div></div>
+          <div class="bar-pct">6.2M</div>
+        </div>
+      </div>
+
+      <!-- Vaccination Coverage dark card -->
+      <div style="background:linear-gradient(135deg,#1a3c2e,#0a2744);border-radius:16px;padding:16px 18px;transition:all .3s;cursor:default;" class="hw-wave">
+        <div class="hw-wave-label">💉 Global Vaccination Coverage</div>
+        <div class="hw-wave-val">84%</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">
+          <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;">
+            <div style="font-size:.62rem;color:rgba(255,255,255,.45);margin-bottom:2px;">Measles</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.95rem;color:#b7e4c7;">83%</div>
+          </div>
+          <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;">
+            <div style="font-size:.62rem;color:rgba(255,255,255,.45);margin-bottom:2px;">Polio</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.95rem;color:#bbdefb;">85%</div>
+          </div>
+          <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;">
+            <div style="font-size:.62rem;color:rgba(255,255,255,.45);margin-bottom:2px;">DTP3</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.95rem;color:#b7e4c7;">84%</div>
+          </div>
+          <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;">
+            <div style="font-size:.62rem;color:rgba(255,255,255,.45);margin-bottom:2px;">HPV</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.95rem;color:#ffd54f;">57%</div>
+          </div>
+        </div>
+        <div class="hw-wave-sub" style="margin-top:10px;">WHO · children immunised globally</div>
+      </div>
+
+    </div>
+
+    <!-- ── CENTER ── -->
+    <div class="hero-center">
+      <h1>World <span>Data</span> Analysis</h1>
+      <p class="hero-sub">Explore our world through data — transparent, visual, insightful.</p>
+      <div class="search-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search for posts, articles, datasets…">
+      </div>
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Pages</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">150</div>
+          <div class="stat-label">Data Sets</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">50</div>
+          <div class="stat-label">Visualisations</div>
+        </div>
+      </div>
+
+      <!-- ── Regional Warming Card ── -->
+      <div class="hw-climate">
+        <div class="hw-climate-title">
+          🌡 Regional Temperature Anomaly
+          <span>vs. 1951–1980 baseline</span>
+        </div>
+        <div class="temp-row">
+          <div class="temp-region">Arctic</div>
+          <div class="temp-bar-track">
+            <div class="temp-bar-fill" style="background:linear-gradient(90deg,#e53935,#b71c1c);" data-w="92">+3.8°C</div>
+          </div>
+        </div>
+        <div class="temp-row">
+          <div class="temp-region">N. America</div>
+          <div class="temp-bar-track">
+            <div class="temp-bar-fill" style="background:linear-gradient(90deg,#ef6c00,#e65100);" data-w="60">+1.7°C</div>
+          </div>
+        </div>
+        <div class="temp-row">
+          <div class="temp-region">Europe</div>
+          <div class="temp-bar-track">
+            <div class="temp-bar-fill" style="background:linear-gradient(90deg,#f57f17,#e65100);" data-w="52">+1.4°C</div>
+          </div>
+        </div>
+        <div class="temp-row">
+          <div class="temp-region">Asia</div>
+          <div class="temp-bar-track">
+            <div class="temp-bar-fill" style="background:linear-gradient(90deg,#558b2f,#33691e);" data-w="45">+1.2°C</div>
+          </div>
+        </div>
+        <div class="temp-row">
+          <div class="temp-region">Africa</div>
+          <div class="temp-bar-track">
+            <div class="temp-bar-fill" style="background:linear-gradient(90deg,#795548,#4e342e);" data-w="38">+1.0°C</div>
+          </div>
+        </div>
+        <div class="temp-row">
+          <div class="temp-region">Oceania</div>
+          <div class="temp-bar-track">
+            <div class="temp-bar-fill" style="background:linear-gradient(90deg,#1565c0,#0d47a1);" data-w="32">+0.9°C</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Dark wave sparkline: global trade ── -->
+      <div class="hw-wave">
+        <div class="hw-wave-label">🚢 Global Trade Volume Index</div>
+        <div class="hw-wave-val">147.3</div>
+        <svg viewBox="0 0 380 60" width="100%" height="60" style="display:block;">
+          <defs>
+            <linearGradient id="wavegrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#52b788" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#52b788" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,55 L32,50 L64,45 L96,40 L128,30 L160,35 L192,22 L224,28 L256,15 L288,20 L320,10 L352,14 L380,6 L380,60 L0,60Z"
+            fill="url(#wavegrad)"/>
+          <polyline points="0,55 32,50 64,45 96,40 128,30 160,35 192,22 224,28 256,15 288,20 320,10 352,14 380,6"
+            fill="none" stroke="#52b788" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="380" cy="6" r="4" fill="#52b788"/>
+        </svg>
+        <div class="hw-wave-sub">WTO Index · 2015=100 · updated monthly</div>
+      </div>
+
+      <!-- ── Latest articles ── -->
+      <div class="hw-articles">
+        <div class="hw-articles-title">📰 Latest Analysis Articles</div>
+        <div class="article-row">
+          <div class="article-dot" style="background:var(--green-mid)"></div>
+          <div class="article-title">World Bank GDP growth forecasts revised upward for 2025</div>
+          <div class="article-tag" style="background:#e8f5e9;color:#2e7d32;">GDP</div>
+        </div>
+        <div class="article-row">
+          <div class="article-dot" style="background:var(--blue-sky)"></div>
+          <div class="article-title">Ocean acidification accelerates — coral reefs at critical threshold</div>
+          <div class="article-tag" style="background:#e3f2fd;color:#1565c0;">Ocean</div>
+        </div>
+        <div class="article-row">
+          <div class="article-dot" style="background:var(--brown-mid)"></div>
+          <div class="article-title">Africa's urbanisation rate overtakes Asia for the first time</div>
+          <div class="article-tag" style="background:#efebe9;color:#795548;">Urban</div>
+        </div>
+        <div class="article-row">
+          <div class="article-dot" style="background:var(--green-light)"></div>
+          <div class="article-title">Renewable energy now cheaper than coal in 135 countries</div>
+          <div class="article-tag" style="background:#e8f5e9;color:#2d6a4f;">Energy</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT PANELS ── -->
+    <div class="hero-side">
+
+      <!-- Renewable Energy donut -->
+      <div class="hw-donut">
+        <div class="hw-donut-title">⚡ Energy Mix 2024</div>
+        <div class="donut-wrap">
+          <svg width="70" height="70" viewBox="0 0 70 70">
+            <!-- Donut rings using stroke-dasharray trick -->
+            <circle cx="35" cy="35" r="26" fill="none" stroke="#e8e2d8" stroke-width="10"/>
+            <!-- Fossil 48% = 163.4 of 339.3 circumference -->
+            <circle cx="35" cy="35" r="26" fill="none" stroke="#a1887f" stroke-width="10"
+              stroke-dasharray="163 176" stroke-dashoffset="0" transform="rotate(-90 35 35)"/>
+            <!-- Solar/Wind 30% = 102 -->
+            <circle cx="35" cy="35" r="26" fill="none" stroke="#52b788" stroke-width="10"
+              stroke-dasharray="102 237" stroke-dashoffset="-163" transform="rotate(-90 35 35)"/>
+            <!-- Hydro 15% = 51 -->
+            <circle cx="35" cy="35" r="26" fill="none" stroke="#4a9fd4" stroke-width="10"
+              stroke-dasharray="51 288" stroke-dashoffset="-265" transform="rotate(-90 35 35)"/>
+            <!-- Nuclear 7% = 24 -->
+            <circle cx="35" cy="35" r="26" fill="none" stroke="#ffd54f" stroke-width="10"
+              stroke-dasharray="24 315" stroke-dashoffset="-316" transform="rotate(-90 35 35)"/>
+            <text x="35" y="39" text-anchor="middle" font-size="9" font-family="DM Mono" fill="var(--text-mid)">52%</text>
+            <text x="35" y="29" text-anchor="middle" font-size="7" fill="var(--text-light)">clean</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-leg-item"><div class="donut-dot" style="background:#52b788"></div>Solar/Wind 30%</div>
+            <div class="donut-leg-item"><div class="donut-dot" style="background:#4a9fd4"></div>Hydro 15%</div>
+            <div class="donut-leg-item"><div class="donut-dot" style="background:#ffd54f"></div>Nuclear 7%</div>
+            <div class="donut-leg-item"><div class="donut-dot" style="background:#a1887f"></div>Fossil 48%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internet users sparkline -->
+      <div class="hw-spark">
+        <div class="hw-spark-head">
+          <span class="hw-spark-title">📡 Internet Users</span>
+          <span class="hw-spark-badge" style="background:var(--blue-pale);color:var(--blue-mid);">5.4B</span>
+        </div>
+        <svg viewBox="0 0 240 56" width="100%" height="56">
+          <defs>
+            <linearGradient id="netgrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4a9fd4" stop-opacity=".4"/>
+              <stop offset="100%" stop-color="#4a9fd4" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,54 L40,52 L80,47 L120,36 L160,20 L200,10 L240,5 L240,56 L0,56Z" fill="url(#netgrad)"/>
+          <polyline points="0,54 40,52 80,47 120,36 160,20 200,10 240,5"
+            fill="none" stroke="#1565c0" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="240" cy="5" r="3.5" fill="#1565c0"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--text-light);font-family:'DM Mono',monospace;margin-top:2px;">
+          <span>2000</span><span>2012</span><span>2025</span>
+        </div>
+      </div>
+
+      <!-- Literacy rate by region bars -->
+      <div class="hw-bars">
+        <div class="hw-bars-title">📚 Literacy Rate by Region</div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">EUR</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--blue-mid);" data-w="99"></div></div>
+          <div class="bar-pct">99%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">AME</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--green-mid);" data-w="94"></div></div>
+          <div class="bar-pct">94%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">ASI</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--brown-light);" data-w="85"></div></div>
+          <div class="bar-pct">85%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name" style="font-size:.6rem;">AFR</div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--green-light);" data-w="65"></div></div>
+          <div class="bar-pct">65%</div>
+        </div>
+      </div>
+
+      <!-- Forest cover stat -->
+      <div class="hw-stat brown">
+        <div class="hw-stat-label">🌲 Global Forest Cover</div>
+        <div class="hw-stat-val brown">31%</div>
+        <div class="hw-stat-sub">of Earth's land surface</div>
+        <div class="hw-stat-change down">▼ −4.2M ha / yr lost</div>
+      </div>
+
+      <!-- Ocean Health sparkline -->
+      <div class="hw-spark">
+        <div class="hw-spark-head">
+          <span class="hw-spark-title">🌊 Ocean Health Index</span>
+          <span class="hw-spark-badge" style="background:var(--blue-pale);color:var(--blue-mid);">70.1</span>
+        </div>
+        <svg viewBox="0 0 240 56" width="100%" height="56">
+          <defs>
+            <linearGradient id="oceangrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0d47a1" stop-opacity=".4"/>
+              <stop offset="100%" stop-color="#0d47a1" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,20 L40,22 L80,26 L120,30 L160,34 L200,38 L240,42 L240,56 L0,56Z" fill="url(#oceangrad)"/>
+          <polyline points="0,20 40,22 80,26 120,30 160,34 200,38 240,42"
+            fill="none" stroke="#1565c0" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 2"/>
+          <circle cx="240" cy="42" r="3.5" fill="#1565c0"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--text-light);font-family:'DM Mono',monospace;margin-top:2px;">
+          <span>2012</span><span>2018</span><span>2024</span>
+        </div>
+        <div style="font-size:.68rem;color:#e53935;margin-top:4px;">⚠ Declining — biodiversity & pollution pressure</div>
+      </div>
+
+      <!-- Poverty stats grid -->
+      <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow-sm);transition:all .3s;" class="hw-bars">
+        <div class="hw-bars-title">💸 Poverty & Inequality</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+          <div style="text-align:center;padding:10px 6px;background:#fafaf8;border-radius:10px;border:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--green-deep);font-weight:500;">9.2%</div>
+            <div style="font-size:.62rem;color:var(--text-light);margin-top:3px;">Extreme poverty<br>&lt;$2.15/day</div>
+          </div>
+          <div style="text-align:center;padding:10px 6px;background:#fafaf8;border-radius:10px;border:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--blue-mid);font-weight:500;">0.68</div>
+            <div style="font-size:.62rem;color:var(--text-light);margin-top:3px;">Gini coefficient<br>global avg</div>
+          </div>
+          <div style="text-align:center;padding:10px 6px;background:#fafaf8;border-radius:10px;border:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--brown-mid);font-weight:500;">700M</div>
+            <div style="font-size:.62rem;color:var(--text-light);margin-top:3px;">Below poverty<br>line globally</div>
+          </div>
+          <div style="text-align:center;padding:10px 6px;background:#fafaf8;border-radius:10px;border:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:#2e7d32;font-weight:500;">−38%</div>
+            <div style="font-size:.62rem;color:var(--text-light);margin-top:3px;">Reduction since<br>2000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Biodiversity loss dark card -->
+      <div style="background:linear-gradient(135deg,#33691e,#1b5e20);border-radius:16px;padding:16px 18px;transition:all .3s;cursor:default;" class="hw-wave">
+        <div class="hw-wave-label">🦋 Biodiversity — Living Planet Index</div>
+        <div class="hw-wave-val">−69%</div>
+        <svg viewBox="0 0 240 52" width="100%" height="52" style="display:block;margin:6px 0;">
+          <defs>
+            <linearGradient id="biograd" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b7e4c7" stop-opacity=".4"/>
+              <stop offset="100%" stop-color="#b7e4c7" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,5 L40,8 L80,14 L120,22 L160,32 L200,42 L240,48 L240,52 L0,52Z" fill="url(#biograd)"/>
+          <polyline points="0,5 40,8 80,14 120,22 160,32 200,42 240,48"
+            fill="none" stroke="#b7e4c7" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="240" cy="48" r="3.5" fill="#b7e4c7"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font-size:.6rem;color:rgba(255,255,255,.4);font-family:'DM Mono',monospace;">
+          <span>1970</span><span>1995</span><span>2020</span>
+        </div>
+        <div class="hw-wave-sub" style="margin-top:6px;">Average vertebrate population decline since 1970 · WWF</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ WORLD AT A GLANCE STRIP ═══════════════════════════ -->
+<div class="glance-strip">
+  <div class="glance-inner">
+    <div class="glance-item">
+      <div class="glance-icon">🌡</div>
+      <div>
+        <div class="glance-val">+1.2°C</div>
+        <div class="glance-lbl">Warming since pre-industrial</div>
+      </div>
+    </div>
+    <div class="glance-div"></div>
+    <div class="glance-item">
+      <div class="glance-icon">💧</div>
+      <div>
+        <div class="glance-val">2.2B</div>
+        <div class="glance-lbl">Lack safe drinking water</div>
+      </div>
+    </div>
+    <div class="glance-div"></div>
+    <div class="glance-item">
+      <div class="glance-icon">🏙</div>
+      <div>
+        <div class="glance-val">57%</div>
+        <div class="glance-lbl">Live in urban areas</div>
+      </div>
+    </div>
+    <div class="glance-div"></div>
+    <div class="glance-item">
+      <div class="glance-icon">📈</div>
+      <div>
+        <div class="glance-val">$13.8K</div>
+        <div class="glance-lbl">World GNI per capita</div>
+      </div>
+    </div>
+    <div class="glance-div"></div>
+    <div class="glance-item">
+      <div class="glance-icon">👶</div>
+      <div>
+        <div class="glance-val">2.3</div>
+        <div class="glance-lbl">Avg births per woman</div>
+      </div>
+    </div>
+    <div class="glance-div"></div>
+    <div class="glance-item">
+      <div class="glance-icon">⚡</div>
+      <div>
+        <div class="glance-val">733M</div>
+        <div class="glance-lbl">Without electricity access</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FEATURED CHARTS ═══════════════════════════════════ -->
+<div class="section">
+
+  <p class="section-title reveal">Featured Visualisations</p>
+
+  <!-- Row 1: 2 large cards -->
+  <div class="featured-grid reveal">
+
+    <!-- Card 1: World Population Map -->
+    <div class="chart-card">
+      <div class="card-tag">🗺 Choropleth Map</div>
+      <div class="card-title">World Population Distribution</div>
+      <div class="card-sub">Country-level data — showing population density</div>
+      <div class="chart-placeholder large">
+        <div class="map-bg">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+          <div class="blob b3"></div>
+          <div class="blob b4"></div>
+          <div class="blob b5"></div>
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue-pale)"></div>Low population</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue-sky)"></div>Mid population</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue-mid)"></div>High population</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Line Graph Population -->
+    <div class="chart-card">
+      <div class="card-tag">📈 Line Graph</div>
+      <div class="card-title">Global Population Growth</div>
+      <div class="card-sub">Showing population increase — 1950 to 2025</div>
+      <div class="chart-placeholder large">
+        <div class="line-bg">
+          <svg viewBox="0 0 500 220" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4a9fd4" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#4a9fd4" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- Grid lines -->
+            <line x1="60" y1="20" x2="490" y2="20" stroke="#e0e0e0" stroke-width="1"/>
+            <line x1="60" y1="55" x2="490" y2="55" stroke="#e0e0e0" stroke-width="1"/>
+            <line x1="60" y1="90" x2="490" y2="90" stroke="#e0e0e0" stroke-width="1"/>
+            <line x1="60" y1="125" x2="490" y2="125" stroke="#e0e0e0" stroke-width="1"/>
+            <line x1="60" y1="160" x2="490" y2="160" stroke="#e0e0e0" stroke-width="1"/>
+            <line x1="60" y1="195" x2="490" y2="195" stroke="#ccc" stroke-width="1"/>
+            <!-- Y labels -->
+            <text x="5" y="24" font-size="10" fill="#999" font-family="DM Mono">8B</text>
+            <text x="5" y="59" font-size="10" fill="#999" font-family="DM Mono">7B</text>
+            <text x="5" y="94" font-size="10" fill="#999" font-family="DM Mono">6B</text>
+            <text x="5" y="129" font-size="10" fill="#999" font-family="DM Mono">5B</text>
+            <text x="5" y="164" font-size="10" fill="#999" font-family="DM Mono">4B</text>
+            <!-- Area fill -->
+            <path d="M60,195 L60,195 L130,180 L200,160 L270,130 L340,95 L410,60 L490,22 L490,195 Z" fill="url(#lineGrad)"/>
+            <!-- Line -->
+            <polyline points="60,195 130,180 200,160 270,130 340,95 410,60 490,22"
+              fill="none" stroke="#1565c0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Dot at end -->
+            <circle cx="490" cy="22" r="5" fill="#1565c0"/>
+            <!-- X labels -->
+            <text x="55" y="210" font-size="10" fill="#999" font-family="DM Mono">1950</text>
+            <text x="120" y="210" font-size="10" fill="#999" font-family="DM Mono">1960</text>
+            <text x="195" y="210" font-size="10" fill="#999" font-family="DM Mono">1975</text>
+            <text x="265" y="210" font-size="10" fill="#999" font-family="DM Mono">1990</text>
+            <text x="335" y="210" font-size="10" fill="#999" font-family="DM Mono">2005</text>
+            <text x="405" y="210" font-size="10" fill="#999" font-family="DM Mono">2015</text>
+            <text x="475" y="210" font-size="10" fill="#999" font-family="DM Mono">2025</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: 3 smaller cards -->
+  <div class="secondary-grid reveal">
+
+    <!-- Card 3: Africa Life Expectancy -->
+    <div class="chart-card">
+      <div class="card-tag">📊 Line Graph</div>
+      <div class="card-title">Africa Life Expectancy</div>
+      <div class="card-sub">Regional trend 1980–2020</div>
+      <div class="chart-placeholder medium">
+        <div class="line-bg">
+          <svg viewBox="0 0 300 160" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="afGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#52b788" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#52b788" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="30" y1="20" x2="290" y2="20" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="30" y1="60" x2="290" y2="60" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="30" y1="100" x2="290" y2="100" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="30" y1="138" x2="290" y2="138" stroke="#ccc" stroke-width="1"/>
+            <path d="M30,138 L30,130 L80,118 L130,100 L180,80 L230,55 L280,30 L280,138 Z" fill="url(#afGrad)"/>
+            <polyline points="30,130 80,118 130,100 180,80 230,55 280,30"
+              fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="280" cy="30" r="4" fill="#2d6a4f"/>
+            <text x="20" y="142" font-size="9" fill="#aaa" font-family="DM Mono">1980</text>
+            <text x="70" y="142" font-size="9" fill="#aaa" font-family="DM Mono">1990</text>
+            <text x="120" y="142" font-size="9" fill="#aaa" font-family="DM Mono">2000</text>
+            <text x="175" y="142" font-size="9" fill="#aaa" font-family="DM Mono">2010</text>
+            <text x="260" y="142" font-size="9" fill="#aaa" font-family="DM Mono">2020</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Europe GDP Choropleth -->
+    <div class="chart-card">
+      <div class="card-tag">🗺 Choropleth Map</div>
+      <div class="card-title">Europe GDP Analysis</div>
+      <div class="card-sub">Country-level GDP comparison</div>
+      <div class="chart-placeholder medium">
+        <div class="map-bg" style="background: linear-gradient(145deg, #e3f2fd 0%, #e8f5e9 60%, #fff3e0 100%);">
+          <!-- Europe-ish blobs -->
+          <div class="blob" style="width:25%;height:40%;background:var(--blue-mid);top:20%;left:30%;opacity:.5;animation:wobble 7s ease-in-out infinite;border-radius:40% 60% 50% 40%/50% 40% 60% 50%;"></div>
+          <div class="blob" style="width:18%;height:30%;background:var(--blue-sky);top:25%;left:55%;opacity:.5;animation:wobble 9s ease-in-out infinite reverse;border-radius:50%;"></div>
+          <div class="blob" style="width:22%;height:28%;background:var(--brown-light);top:50%;left:20%;opacity:.45;animation:wobble 8s ease-in-out infinite 1s;border-radius:50% 40% 60% 50%;"></div>
+          <div class="blob" style="width:14%;height:22%;background:var(--green-light);top:15%;left:15%;opacity:.5;animation:wobble 10s ease-in-out infinite 2s;border-radius:50%;"></div>
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue-pale)"></div>Low GDP</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue-mid)"></div>High GDP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: Asia Map -->
+    <div class="chart-card">
+      <div class="card-tag">🌏 Geography Map</div>
+      <div class="card-title">Asia Geography Map</div>
+      <div class="card-sub">Regional overview — physical terrain</div>
+      <div class="chart-placeholder medium">
+        <div class="map-bg" style="background: linear-gradient(145deg, #e8f5e9 0%, #fff9c4 40%, #e3f2fd 80%);">
+          <div class="blob" style="width:35%;height:45%;background:var(--green-mid);top:15%;left:20%;opacity:.5;animation:wobble 9s ease-in-out infinite;border-radius:40% 60% 50% 40%;"></div>
+          <div class="blob" style="width:20%;height:35%;background:var(--brown-mid);top:40%;left:55%;opacity:.4;animation:wobble 8s ease-in-out infinite 1s;border-radius:50%;"></div>
+          <div class="blob" style="width:28%;height:32%;background:var(--green-deep);top:30%;left:35%;opacity:.35;animation:wobble 11s ease-in-out infinite 2s;"></div>
+          <div class="blob" style="width:16%;height:25%;background:var(--blue-sky);top:20%;left:70%;opacity:.45;animation:wobble 7s ease-in-out infinite;border-radius:50%;"></div>
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--green-mid)"></div>Forest</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--brown-mid)"></div>Desert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ BROWSE TOPICS ══════════════════════════════════════ -->
+<section class="topics-section">
+  <div class="topics-inner">
+    <h2 class="topics-head reveal">Browse all topics</h2>
+    <div class="topics-grid reveal">
+
+      <!-- Brand column -->
+      <div class="topic-brand">
+        <div class="brand-icon">🌍</div>
+        <div class="brand-name">WDA Project</div>
+        <p class="brand-tagline">Our mission is to use world data analysis to be the data transparency leader — making complex global data accessible to everyone.</p>
+      </div>
+
+      <!-- Featured Topics + Latest -->
+      <div class="topic-links-panel" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+        <div>
+          <div class="topic-col-head">
+            <span>⭐</span> Featured Topics
+          </div>
+          <div class="topic-link-item green">World Politics</div>
+          <div class="topic-link-item blue">Climate Change</div>
+          <div class="topic-link-item brown">Health</div>
+          <div class="topic-link-item green">Economics</div>
+          <div class="topic-link-item blue">Demographics</div>
+        </div>
+        <div>
+          <div class="topic-col-head">
+            <span>🕐</span> Latest
+          </div>
+          <div class="topic-link-item green">World Bank GDP vs GDP</div>
+          <div class="topic-link-item blue">UN's goal towards PPP</div>
+          <div class="topic-link-item brown">FARS Data Analysis</div>
+          <div class="topic-link-item green">Global Deforestation</div>
+          <div class="topic-link-item blue">Ocean Health Index</div>
+        </div>
+      </div>
+
+      <!-- Data sources col -->
+      <div class="topic-brand">
+        <div class="brand-icon" style="background: linear-gradient(135deg, var(--brown-mid), var(--brown-light));">📦</div>
+        <div class="brand-name">Data Sources</div>
+        <p class="brand-tagline">Powered by World Bank, UN, WHO, IMF & peer-reviewed datasets — all open and transparent.</p>
+        <div style="margin-top:16px;">
+          <div class="topic-link-item green" style="padding:6px 0;">World Bank API</div>
+          <div class="topic-link-item blue" style="padding:6px 0;">UN Data Portal</div>
+          <div class="topic-link-item brown" style="padding:6px 0;">WHO Statistics</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="color:var(--brown-pale)">
+          <div class="logo-icon">🌍</div>
+          WDA Project
+        </a>
+        <p>Making world data transparent and accessible — one chart at a time.</p>
+        <div class="social-row">
+          <!-- Facebook -->
+          <a href="#" class="social-btn fb" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="#" class="social-btn wa" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <!-- X / Twitter -->
+          <a href="#" class="social-btn x" title="X (Twitter)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#">Data Explorer</a></li>
+          <li><a href="#">Chart Builder</a></li>
+          <li><a href="#">Country Profiles</a></li>
+          <li><a href="#">Comparisons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Topics</h4>
+        <ul>
+          <li><a href="#">World Politics</a></li>
+          <li><a href="#">Climate Change</a></li>
+          <li><a href="#">Economics</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Demographics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Data Sources</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2025 World Data Analysis Project. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Solidions</a>
+        <a href="#">About</a>
+        <a href="#">Data Sources</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
